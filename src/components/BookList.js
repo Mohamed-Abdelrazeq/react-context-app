@@ -1,0 +1,16 @@
+import React, { useContext } from 'react';
+import { BookContext } from '../contexts/BookContext';
+import BookDetails from './BookDetails';
+
+export default function BookList() {
+    const { books } = useContext(BookContext);
+    return books.length ? (
+        <div className='book-list'>{
+            books.map((book) => (<BookDetails book={book} key={book.key} />))
+        }</div>
+    ) : (
+        <div className='empty'>
+            There is no more books to read!
+        </div>
+    )
+}
